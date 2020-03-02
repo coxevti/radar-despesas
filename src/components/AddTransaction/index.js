@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../context/GlobalState";
 import { format } from "date-fns";
 
 import {
@@ -14,6 +15,24 @@ export default function AddTransaction({ handleClose, show }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState(format(new Date(), "yyyy-MM-dd"));
+
+  const { addTransaction } = useContext(GlobalContext);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      description,
+      amount: +amount,
+      date
+    };
+    addTransaction(newTransaction);
+    setDescription("");
+    setAmount(0);
+    setDate(format(new Date(), "yyyy-MM-dd"));
+    handleClose();
+  }
+
   return (
     <Container show={show}>
       <ModalContent>
@@ -24,7 +43,7 @@ export default function AddTransaction({ handleClose, show }) {
           </button>
         </ModalHeader>
         <ModalBody>
-          <form>
+          <form onSubmit={onSubmit}>
             <div>
               <span>
                 <MdTextFormat />
