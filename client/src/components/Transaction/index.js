@@ -4,7 +4,7 @@ import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { numberWithCommas } from "../../utils/format";
 
-import { FaLightbulb } from "react-icons/fa";
+import { FaThumbsDown, FaThumbsUp } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 
 export default function Transaction({ transaction }) {
@@ -14,7 +14,7 @@ export default function Transaction({ transaction }) {
   return (
     <li className={transaction.amount < 0 ? "minus" : "plus"}>
       <div>
-        <FaLightbulb />
+        {transaction.amount < 0 ? <FaThumbsDown style={{color: '#ff4c4c'}}/> : <FaThumbsUp style={{color: '#34bf49'}}/>}
         <span>
           <h2>{transaction.description}</h2>
           <time>
