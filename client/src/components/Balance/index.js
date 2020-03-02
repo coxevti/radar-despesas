@@ -24,7 +24,7 @@ export default function Balance() {
     <Container>
       <span>
         <h4>Seu saldo</h4>
-        <h1>$ {numberWithCommas(total)}</h1>
+        <h1>{numberWithCommas(total)}</h1>
       </span>
       <AddTransaction show={show} handleClose={handleCloseAddTransaction} />
       <button onClick={handleShowAddTransaction}>

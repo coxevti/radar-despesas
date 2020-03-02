@@ -26,7 +26,7 @@ export default function Transaction({ transaction }) {
       </div>
       <div>
         <h3>
-          {sign}R$ {numberWithCommas(Math.abs(transaction.amount))}
+          {numberWithCommas(Math.abs(transaction.amount))} {sign}
         </h3>
         <button onClick={() => deleteTransaction(transaction._id)}>
           <MdClear />
