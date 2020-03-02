@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
-
-// import { Container } from './styles';
+import { numberWithCommas } from "../../utils/format";
 
 import { FaLightbulb } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
@@ -27,9 +26,9 @@ export default function Transaction({ transaction }) {
       </div>
       <div>
         <h3>
-          {sign}R$ {Math.abs(transaction.amount)}
+          {sign}R$ {numberWithCommas(Math.abs(transaction.amount))}
         </h3>
-        <button onClick={() => deleteTransaction(transaction.id)}>
+        <button onClick={() => deleteTransaction(transaction._id)}>
           <MdClear />
         </button>
       </div>

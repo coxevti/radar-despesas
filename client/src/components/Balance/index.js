@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../../context/GlobalState";
+import { numberWithCommas } from "../../utils/format";
 
 import { Container } from "./styles";
 import { FaPlus } from "react-icons/fa";
@@ -23,7 +24,7 @@ export default function Balance() {
     <Container>
       <span>
         <h4>Seu saldo</h4>
-        <h1>$ {total}</h1>
+        <h1>$ {numberWithCommas(total)}</h1>
       </span>
       <AddTransaction show={show} handleClose={handleCloseAddTransaction} />
       <button onClick={handleShowAddTransaction}>
